@@ -20,7 +20,7 @@ public class Vetor {
 		Random gerador = new Random();
 		
 		for(int i =0; i < vetor.length ; i++) {
-			vetor[i] = gerador.nextInt(1000);
+			vetor[i] = gerador.nextInt(tam);
 		}
 		
 	}
@@ -30,7 +30,7 @@ public class Vetor {
 		for(int i =0; i < this.vetor.length ; i++) {
 			System.out.print(this.vetor[i]+" ");
 		}
-		System.out.print(" ]");
+		System.out.println(" ]");
 	}
 
 }
