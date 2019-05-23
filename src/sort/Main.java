@@ -15,6 +15,15 @@ public class Main {
 		System.out.println("tempo de execução: " + (tempoFinal - tempoInicial));
 		vetor.printVetor();
 		
+		vetor.makeVetor(10);
+		vetor.printVetor();
+		
+		tempoInicial = System.currentTimeMillis();
+		sort.heapSort(vetor);
+		tempoFinal = System.currentTimeMillis();
+		System.out.println("tempo de execução heap : " + (tempoFinal - tempoInicial));
+		vetor.printVetor();
+		
 		
 		vetor.makeVetor(100);
 		vetor.printVetor();
@@ -52,6 +61,8 @@ public class Main {
 		tempoFinal = System.currentTimeMillis();
 		System.out.println("tempo de execução: " + (tempoFinal - tempoInicial));
 		vetor.printVetor();
+		
+		
 	}
 
 }

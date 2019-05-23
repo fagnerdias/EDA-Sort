@@ -4,8 +4,18 @@ import java.util.Random;
 
 public class Vetor {
 	private int[] vetor;
+	private int heapSize;
 	
 	
+	
+	public int getHeapSize() {
+		return heapSize;
+	}
+
+	public void setHeapSize(int heapSize) {
+		this.heapSize = heapSize;
+	}
+
 	public int[] getVetor() {
 		return vetor;
 	}
