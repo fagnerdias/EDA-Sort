@@ -71,5 +71,81 @@ public class Sort {
 	
 	
 	
+	public void	quicksort(Vetor A, int p, int r) {
+		if(p < r) {
+			int q = partition(A, p, r);
+			quicksort(A, p, q-1);
+			quicksort(A, q+1, r);
+		}
+	}
+	
+	public int partition(Vetor A, int p, int r) {
+		
+		int x = A.getVetor()[r];
+		int i = p -1;
+		for(int j = p; j < r-1; j++) {
+			if(A.getVetor()[j] <= x) {
+				i++;
+				int aux = A.getVetor()[i];
+				A.getVetor()[i] =  A.getVetor()[j];
+				A.getVetor()[j] = aux;
+			}
+		}
+		int aux2 = A.getVetor()[i+1];
+		A.getVetor()[i+1] = A.getVetor()[r];
+		A.getVetor()[r] = aux2;
+		return i+1;
+	}
+	
+	
+	public void mergesort(Vetor A, int p, int r) {
+		if(p < r) {
+			int q = ((p + r) / 2);
+		    mergesort(A, p, q);
+	        mergesort(A, q + 1, r);
+	        merge(A, p, q, r);
+		}
+	}
+	
+	public void merge(Vetor A, int p, int q, int r) {
+		int[] aux = new int[A.getVetor().length];
+		
+		for(int i = p; i<= r; i++) {
+			aux[i] = A.getVetor()[i];
+		}
+		
+		int i = p;
+		int j = q+ 1;
+		int k = p;
+
+		while (i <= q && j <= r) {
+			if (aux[i] < aux[j]) {
+				A.getVetor()[k] = aux[i];
+				i++;
+
+			} else {
+				A.getVetor()[k] = aux[j];
+				j++;
+			}
+			k++;
+		}
+
+		while (i <= q) {
+			A.getVetor()[k] = aux[i];
+			i++;
+			k++;
+		}
+
+		while (j <= r) {
+			A.getVetor()[k] = aux[j];
+			j++;
+			k++;
+
+		}
+
+	}
+	
+	
+	
 
 }
