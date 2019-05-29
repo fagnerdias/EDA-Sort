@@ -34,13 +34,11 @@ public class Sort {
 	public void maxHeapify(Vetor A, int indice) {
 		int l = left(indice);
 		int r = rigth(indice);
-		int largest = 0;
-		if(l <= A.getHeapSize() && A.getVetor()[l] > A.getVetor()[r]) {
+		int largest = indice;
+		if(l < A.getHeapSize() && A.getVetor()[l] > A.getVetor()[r]) {
 			largest = l;
-		}else {
-			largest = indice;
 		}
-		if(r <= A.getHeapSize() && A.getVetor()[r] > A.getVetor()[largest]) {
+		if(r < A.getHeapSize() && A.getVetor()[r] > A.getVetor()[largest]) {
 			largest = r;
 		}
 		if(largest != indice) {
@@ -73,6 +71,7 @@ public class Sort {
 	
 	public void	quicksort(Vetor A, int p, int r) {
 		if(p < r) {
+			
 			int q = partition(A, p, r);
 			quicksort(A, p, q-1);
 			quicksort(A, q+1, r);
@@ -143,6 +142,35 @@ public class Sort {
 
 		}
 
+	}
+	
+	public void mergeInsertion(Vetor A, int p, int r, int size) {
+		if(p < r) {	
+			if((r - p) < size ) {
+				insertionSort(A.getVetor());
+				
+			}
+			else { 				
+				int q = ((p + r) / 2);
+			    mergeInsertion(A, p, q,size);
+			    mergeInsertion(A, q + 1, r,size);
+		        merge(A, p, q, r);
+			}
+		}
+	}
+	
+	public void quickInsertion(Vetor A, int p, int r, int size) {
+		if(p < r) {	
+			if((r - p) < size ) {
+				insertionSort(A.getVetor());
+				
+			}
+			else { 				
+				int q = partition(A, p, r);
+				quickInsertion(A, p, q-1,size);
+				quickInsertion(A, q+1, r,size);
+			}
+		}
 	}
 	
 	
