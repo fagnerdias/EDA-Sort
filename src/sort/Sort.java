@@ -97,66 +97,66 @@ public class Sort {
 	}
 	
 	
-	public void mergesort(Vetor A, int p, int r) {
-		if(p < r) {
-			int q = ((p + r) / 2);
-		    mergesort(A, p, q);
-	        mergesort(A, q + 1, r);
-	        merge(A, p, q, r);
-		}
+	public void mergesort(int[] a, int n) {
+	    if (n < 2) {
+	        return;
+	    }
+	    int mid = n / 2;
+	    int[] l = new int[mid];
+	    int[] r = new int[n - mid];
+	 
+	    for (int i = 0; i < mid; i++) {
+	        l[i] = a[i];
+	    }
+	    for (int i = mid; i < n; i++) {
+	        r[i - mid] = a[i];
+	    }
+	    mergesort(l, mid);
+	    mergesort(r, n - mid);
+	 
+	    merge(a, l, r, mid, n - mid);
 	}
 	
-	public void merge(Vetor A, int p, int q, int r) {
-		int[] aux = new int[A.getVetor().length];
-		
-		for(int i = p; i<= r; i++) {
-			aux[i] = A.getVetor()[i];
-		}
-		
-		int i = p;
-		int j = q+ 1;
-		int k = p;
-
-		while (i <= q && j <= r) {
-			if (aux[i] < aux[j]) {
-				A.getVetor()[k] = aux[i];
-				i++;
-
-			} else {
-				A.getVetor()[k] = aux[j];
-				j++;
+	public void merge(
+			  int[] a, int[] l, int[] r, int left, int right) {
+			  
+			    int i = 0, j = 0, k = 0;
+			    while (i < left && j < right) {
+			        if (l[i] <= r[j]) {
+			            a[k++] = l[i++];
+			        }
+			        else {
+			            a[k++] = r[j++];
+			        }
+			    }
+			    while (i < left) {
+			        a[k++] = l[i++];
+			    }
+			    while (j < right) {
+			        a[k++] = r[j++];
+			    }
 			}
-			k++;
-		}
-
-		while (i <= q) {
-			A.getVetor()[k] = aux[i];
-			i++;
-			k++;
-		}
-
-		while (j <= r) {
-			A.getVetor()[k] = aux[j];
-			j++;
-			k++;
-
-		}
-
-	}
 	
-	public void mergeInsertion(Vetor A, int p, int r, int size) {
-		if(p < r) {	
-			if((r - p) < size ) {
-				insertionSort(A.getVetor());
-				
-			}
-			else { 				
-				int q = ((p + r) / 2);
-			    mergeInsertion(A, p, q,size);
-			    mergeInsertion(A, q + 1, r,size);
-		        merge(A, p, q, r);
-			}
+	public void mergeInsertion(int[] a, int n, int size) {
+		if (n < 2) {
+	        return;
+	    }
+		if(n < size) {
+			insertionSort(a);
 		}
+	    int mid = n / 2;
+	    int[] l = new int[mid];
+	    int[] r = new int[n - mid];
+	 
+	    for (int i = 0; i < mid; i++) {
+	        l[i] = a[i];
+	    }
+	    for (int i = mid; i < n; i++) {
+	        r[i - mid] = a[i];
+	    }
+	    mergeInsertion(l, mid,size);
+	    mergeInsertion(r, n - mid,size);
+	    merge(a, l, r, mid, n - mid);
 	}
 	
 	public void quickInsertion(Vetor A, int p, int r, int size) {

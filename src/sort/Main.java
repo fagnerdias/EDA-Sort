@@ -65,12 +65,14 @@ public class Main {
 		med =0;
 		
 		
-//--------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------
+		
 		time = new long[10];
 		for(int i =0; i < 10; i++) {
 			vetor.makeVetor(10000);
 			long tempoInicial = System.currentTimeMillis();
-			sort.mergesort(vetor, 0, 10000-1);
+			sort.mergesort(vetor.getVetor(),10000);
 			long tempoFinal = System.currentTimeMillis();
 			time[i] = tempoFinal - tempoInicial;
 		}
@@ -89,7 +91,7 @@ public class Main {
 		for(int i =0; i < 10; i++) {
 			vetor.makeVetor(5000);
 			long tempoInicial = System.currentTimeMillis();
-			sort.mergesort(vetor, 0, 5000-1);
+			sort.mergesort(vetor.getVetor(),5000);
 			long tempoFinal = System.currentTimeMillis();
 			time[i] = tempoFinal - tempoInicial;
 		}
@@ -108,7 +110,7 @@ public class Main {
 		for(int i =0; i < 10; i++) {
 			vetor.makeVetor(500);
 			long tempoInicial = System.currentTimeMillis();
-			sort.mergesort(vetor, 0, 500-1);
+			sort.mergesort(vetor.getVetor(), 500);
 			long tempoFinal = System.currentTimeMillis();
 			time[i] = tempoFinal - tempoInicial;
 		}
@@ -306,7 +308,7 @@ public class Main {
 		for(int i =0; i < 10; i++) {
 			vetor.makeVetor(10000);
 			long tempoInicial = System.currentTimeMillis();
-			sort.mergeInsertion(vetor, 0, 10000-1,10);
+			sort.mergeInsertion(vetor.getVetor(), 10000,10);
 			long tempoFinal = System.currentTimeMillis();
 			time[i] = tempoFinal - tempoInicial;
 		}
@@ -325,7 +327,7 @@ public class Main {
 		for(int i =0; i < 10; i++) {
 			vetor.makeVetor(5000);
 			long tempoInicial = System.currentTimeMillis();
-			sort.mergeInsertion(vetor, 0, 5000-1,10);
+			sort.mergeInsertion(vetor.getVetor(),5000,10);
 			long tempoFinal = System.currentTimeMillis();
 			time[i] = tempoFinal - tempoInicial;
 		}
@@ -344,7 +346,7 @@ public class Main {
 		for(int i =0; i < 10; i++) {
 			vetor.makeVetor(500);
 			long tempoInicial = System.currentTimeMillis();
-			sort.mergeInsertion(vetor, 0, 500-1,10);
+			sort.mergeInsertion(vetor.getVetor(),500,10);
 			long tempoFinal = System.currentTimeMillis();
 			time[i] = tempoFinal - tempoInicial;
 		}
